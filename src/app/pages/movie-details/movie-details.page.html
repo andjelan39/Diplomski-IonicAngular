@@ -8,22 +8,46 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card *ngIf="movie">
-    <img [src]="imageBaseUrl + '/w400' + movie.poster_path" />
-
-    <ion-card-header>
-      <ion-card-title> {{ movie.title }} ({{ movie.release_date | date: 'y'}}) </ion-card-title>
-      <ion-card-subtitle> {{ movie.tagline }} </ion-card-subtitle>
-      <ion-text color="tertiary">
-        <span *ngFor="let g of movie.genres; let isLast = last">
-          {{ g.name }} {{ !isLast ? ' · ' : '' }}
-        </span>
-      </ion-text>
-    </ion-card-header>
-
-    <ion-card-content>
-      <ion-label color="medium">{{ movie.overview }}</ion-label>
-    </ion-card-content>
-    
-  </ion-card>
+  <img [src]="imageBaseUrl + '/w500' + movie?.backdrop_path" />
+  <div class="movie-card-title" *ngIf="movie">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="8">
+          <h4>{{movie.title}}</h4>
+          <span>
+            RELEASED IN <br /><b>
+              {{ movie.release_date | date : "y" }}
+            </b></span
+          >
+          <br />
+          <p class="tagline">{{ movie.tagline }}</p>
+          <br />
+        </ion-col>
+        <ion-col size="4">
+          <img
+            [src]="imageBaseUrl + '/w400' + movie.poster_path"
+            class="movie-card-img"
+          />
+        </ion-col>
+      </ion-row>
+      <ion-row class="bottomRow">
+        <ion-col>
+          <span>GENRE</span> <br />
+          <span *ngFor="let g of movie.genres; let isLast = last" class="genre">
+            {{ g.name }} {{ !isLast ? ' · ' : '' }}
+          </span>
+        </ion-col>
+      </ion-row>
+      <ion-row class="lastRow">
+        <ion-col>
+          <p> {{movie.overview}} </p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span> REVIEWS <br /></span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>

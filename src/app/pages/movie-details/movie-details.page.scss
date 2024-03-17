@@ -1,0 +1,91 @@
+.movie-card-title {
+  margin-left: 7px;
+  margin-right: 5px;
+}
+
+.movie-card-img {
+  max-height: 143px;
+  border: 1px solid #f4f5f8;
+}
+
+span {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.tagline {
+  color: #b2b2b2;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+.genre {
+  color: #b2b2b2;
+  font-size: 13px;
+}
+
+b {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.span-year-genre {
+  font-size: 13px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.bottomRow {
+  margin-top: -18px;
+}
+
+.lastRow {
+  margin-top: -9px;
+}
+
+p {
+  font-size: 13px;
+  text-align: justify;
+  margin-right: 6px;
+}
+
+.avatar {
+  max-height: 40px;
+  width: auto;
+}
+
+.reviews {
+  margin-left: 0px;
+  margin-right: 15px;
+  margin-top: -12px;
+}
+
+.review-text {
+  margin-top: 5px;
+  margin-bottom: 1px;
+}
+
+.areaField {
+  height: 110px;
+  border-radius: 12px;
+  box-shadow: 1px 8px 8px 0px rgba(0, 0, 0, 0.08);
+  --highlight-height: 0px;
+  --background: rgb(55, 62, 70);
+
+  ion-textarea {
+    font-size: 17px;
+    --padding-start: 5px;
+    --padding-bottom: 7px;
+    color: #dee0e3;
+  }
+}
+
+.add-review-form {
+  margin-left: 7px;
+  margin-right: 5px;
+  margin-top: -30px;
+}
+
+#form {
+  margin-top: 5px;
+}
