@@ -25,6 +25,24 @@
             <ion-label>Search</ion-label>
           </ion-item>
         </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item routerLink="/my-movies/tabs/reviewed-movies">
+            <ion-icon name="albums" slot="start"></ion-icon>
+            <ion-label>My Reviews</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item routerLink="/my-movies/tabs/settings">
+            <ion-icon name="options-outline" slot="start"></ion-icon>
+            <ion-label>Settings</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item (click)="logout()">
+            <ion-icon name="exit" slot="start"></ion-icon>
+            <ion-label>Logout</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
       </ion-list>
     </ion-content>
   </ion-menu>

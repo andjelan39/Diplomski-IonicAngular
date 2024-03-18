@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <img [src]="imageBaseUrl + '/w500' + movie?.backdrop_path" />
+  <img [src]="imageBaseUrl + '/w1280' + movie?.backdrop_path" />
   <div class="movie-card-title" *ngIf="movie">
     <ion-grid>
       <ion-row>
@@ -25,7 +25,7 @@
         </ion-col>
         <ion-col size="4">
           <img
-            [src]="imageBaseUrl + '/w400' + movie.poster_path"
+            [src]="imageBaseUrl + '/w500' + movie.poster_path"
             class="movie-card-img"
           />
         </ion-col>
@@ -41,6 +41,14 @@
       <ion-row class="lastRow">
         <ion-col>
           <p> {{movie.overview}} </p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="middleRow">
+        <ion-col>
+          <span>AVERAGE SCORE</span> <br />
+          <span class="genre"> 
+            {{ movie.vote_average | number : "1.0-1" }}
+          </span>
         </ion-col>
       </ion-row>
       <ion-row>
