@@ -7,15 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { SearchPageRoutingModule } from './search-routing.module';
 
 import { SearchPage } from './search.page';
-import { SearchMovieElementComponent } from '../search-movie-element/search-movie-element.component';
+import { MovieModule } from 'src/app/movie.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SearchPageRoutingModule
+    SearchPageRoutingModule,
+    MovieModule
   ],
-  declarations: [SearchPage, SearchMovieElementComponent]
+  declarations: [SearchPage]
 })
 export class SearchPageModule {}

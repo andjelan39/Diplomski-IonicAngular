@@ -1,5 +1,5 @@
 .movie-card-title {
-  margin-left: 7px;
+  margin-left: 8px;
   margin-right: 5px;
 }
 
@@ -29,22 +29,17 @@ b {
   font-size: 14px;
 }
 
-.span-year-genre {
-  font-size: 13px;
-  font-weight: 400;
-  text-transform: uppercase;
-}
-
-.bottomRow {
-  margin-top: -18px;
-}
-
-.lastRow {
-  margin-top: -9px;
-}
-
 .middleRow{
   margin-top: -13px;
+}
+
+.castRow{
+  margin-top: -15px;
+  margin-bottom: 10px;
+}
+
+.reviewsRow{
+  margin-top: 3px;
 }
 
 p {

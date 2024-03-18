@@ -1,13 +1,12 @@
 ion-searchbar.custom {
-    --background: rgb(55, 62, 70);
-    --color: #f4f5f8;;
-    --placeholder-color: #f4f5f8;;
-    --icon-color: #f4f5f8;;
-    --clear-button-color: #f4f5f8;;
-    --border-radius: 10px;
-  }
-  
-  .content-wrapper{
-    margin: 0 12px 20px 13px;
-  }
-  
+  --background: rgb(55, 62, 70);
+  --color: #f4f5f8;
+  --placeholder-color: #f4f5f8;
+  --icon-color: #f4f5f8;
+  --clear-button-color: #f4f5f8;
+  --border-radius: 10px;
+}
+
+.movie-list {
+  margin-right: 10px;
+}

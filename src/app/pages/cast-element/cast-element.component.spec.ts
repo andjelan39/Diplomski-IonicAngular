@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { SearchMovieElementComponent } from './search-movie-element.component';
+import { CastElementComponent } from './cast-element.component';
 
-describe('SearchMovieElementComponent', () => {
-  let component: SearchMovieElementComponent;
-  let fixture: ComponentFixture<SearchMovieElementComponent>;
+describe('CastElementComponent', () => {
+  let component: CastElementComponent;
+  let fixture: ComponentFixture<CastElementComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchMovieElementComponent ],
+      declarations: [ CastElementComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SearchMovieElementComponent);
+    fixture = TestBed.createComponent(CastElementComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

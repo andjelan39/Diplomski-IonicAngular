@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/movies"></ion-back-button>
     </ion-buttons>
-    <ion-title> {{ movie?.title }} </ion-title>
+    <ion-title> {{ movie?.title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,15 +13,10 @@
     <ion-grid>
       <ion-row>
         <ion-col size="8">
-          <h4>{{movie.title}}</h4>
-          <span>
-            RELEASED IN <br /><b>
-              {{ movie.release_date | date : "y" }}
-            </b></span
-          >
+          <h4>{{movie.title}} ({{ movie.release_date | date : "y" }})</h4>
+          <span> DIRECTED BY <br /><b> {{ director }} </b></span>
           <br />
           <p class="tagline">{{ movie.tagline }}</p>
-          <br />
         </ion-col>
         <ion-col size="4">
           <img
@@ -30,7 +25,12 @@
           />
         </ion-col>
       </ion-row>
-      <ion-row class="bottomRow">
+      <ion-row class="middleRow">
+        <ion-col>
+          <p>{{movie.overview}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="middleRow">
         <ion-col>
           <span>GENRE</span> <br />
           <span *ngFor="let g of movie.genres; let isLast = last" class="genre">
@@ -38,20 +38,16 @@
           </span>
         </ion-col>
       </ion-row>
-      <ion-row class="lastRow">
-        <ion-col>
-          <p> {{movie.overview}} </p>
-        </ion-col>
-      </ion-row>
-      <ion-row class="middleRow">
-        <ion-col>
-          <span>AVERAGE SCORE</span> <br />
-          <span class="genre"> 
-            {{ movie.vote_average | number : "1.0-1" }}
-          </span>
-        </ion-col>
-      </ion-row>
       <ion-row>
+        <ion-col>
+          <span>CAST</span>
+          <ion-row class="castRow">
+            <app-cast-element *ngFor="let actor of actors" [actor]="actor">
+            </app-cast-element>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+      <ion-row class="reviewsRow">
         <ion-col>
           <span> REVIEWS <br /></span>
         </ion-col>

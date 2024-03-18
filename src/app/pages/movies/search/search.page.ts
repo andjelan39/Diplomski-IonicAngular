@@ -11,18 +11,13 @@ import { environment } from 'src/environments/environment';
 export class SearchPage implements OnInit, OnDestroy {
   movies: any[] = [];
   private movieSub!: Subscription;
-  public results: any[] = [...this.movies];
-  currentPage = 1;
   imageBaseUrl = environment.images;
+  query: string = '';
+  searchResults: any;
 
   constructor(private movieService: MovieService) {}
 
-  ngOnInit() {
-    this.movieSub = this.movieService.getTopRatedMovies(this.currentPage).subscribe((res) => {
-        this.movies.push(...res.results);
-        console.log(res);
-      });
-  }
+  ngOnInit() {}
 
   ngOnDestroy() {
     if (this.movieSub) {
@@ -30,11 +25,15 @@ export class SearchPage implements OnInit, OnDestroy {
     }
   }
 
-  handleInput(event: any) {
-    const query = event.target.value.toLowerCase();
-    this.results = this.movies.filter(
-      (movie) => movie.title.toLowerCase().indexOf(query) > -1
-    );
+  searchMovies() {
+    if (this.query.trim() !== '') {
+      this.movieSub = this.movieService
+        .searchMovies(this.query)
+        .subscribe((res) => {
+          this.searchResults = res;
+        });
+    } else {
+      this.searchResults = null;
+    }
   }
-  
 }

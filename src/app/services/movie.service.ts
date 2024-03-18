@@ -18,10 +18,19 @@ export class MovieService {
   constructor(private http: HttpClient) { }
 
   getTopRatedMovies(page = 1): Observable<ApiResult>{
-    return this.http.get<ApiResult>(`${environment.baseUrl}/movie/popular?api_key=${environment.apiKey}&page=${page}`);
+    return this.http.get<ApiResult>(`${environment.baseUrl}/movie/top_rated?api_key=${environment.apiKey}&page=${page}`);
   }
 
   getMovieDetails(id: string | null){
     return this.http.get(`${environment.baseUrl}/movie/${id}?api_key=${environment.apiKey}`);
   }
+
+  getMovieCredits(id: string | null): Observable<any> {
+    return this.http.get(`${environment.baseUrl}/movie/${id}/credits?api_key=${environment.apiKey}`);
+  }
+
+  searchMovies(query: string): Observable<any> {
+    return this.http.get(`${environment.baseUrl}/search/movie?api_key=${environment.apiKey}&query=${query}`);
+  }
+
 }

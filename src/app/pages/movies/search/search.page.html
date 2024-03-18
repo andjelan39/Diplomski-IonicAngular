@@ -12,16 +12,17 @@
     show-clear-button="focus"
     placeholder="Enter movie title"
     class="custom"
-    (ionInput)="handleInput($event)"
+    [(ngModel)]="query"
+    (ionInput)="searchMovies()"
   ></ion-searchbar>
-  <div class="content-wrapper">
-    <ion-list>
-      <app-search-movie-element
-        *ngFor="let result of results"
-        [movie]="result"
-        [routerLink]="result.id"
+  <div class="movie-list">
+    <ion-list *ngIf="searchResults">
+      <app-movie-element
+        *ngFor="let movie of searchResults.results"
+        [movie]="movie"
+        [routerLink]="movie.id"
       >
-      </app-search-movie-element>
+      </app-movie-element>
     </ion-list>
   </div>
 </ion-content>
