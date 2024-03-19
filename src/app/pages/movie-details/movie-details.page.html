@@ -38,7 +38,7 @@
           </span>
         </ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row class="creditsRow">
         <ion-col>
           <span>CAST</span>
           <ion-row class="castRow">
@@ -47,11 +47,66 @@
           </ion-row>
         </ion-col>
       </ion-row>
+    </ion-grid>
+  </div>
+  <div class="add-review-form">
+    <form
+      #reviewForm="ngForm"
+      id="form"
+      (ngSubmit)="addMovieReview(reviewForm)"
+    >
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <span> ADD REVIEW <br /></span>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item class="areaField">
+              <ion-textarea
+                type="text"
+                rows="4"
+                placeholder="Enter your review..."
+                ngModel
+                name="review"
+                required
+                #review="ngModel"
+              ></ion-textarea>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="3">
+            <ion-button
+              type="submit"
+              expand="block"
+              size="small"
+              [disabled]="reviewForm.invalid"
+            >
+              ADD
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </div>
+  <div class="movie-card-title">
+    <ion-grid>
       <ion-row class="reviewsRow">
         <ion-col>
           <span> REVIEWS <br /></span>
         </ion-col>
       </ion-row>
     </ion-grid>
+  </div>
+  <div class="reviews">
+    <ion-list>
+      <app-review-element
+        *ngFor="let review of reviews"
+        [review]="review"
+      ></app-review-element>
+    </ion-list>
+    <br />
   </div>
 </ion-content>

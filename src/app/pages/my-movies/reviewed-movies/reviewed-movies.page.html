@@ -10,5 +10,11 @@
 <ion-content>
   <div class="movie-list">
     <h6>REVIEWED MOVIES</h6>
+    <ion-list>
+      <app-reviewed-movie-element
+        *ngFor="let review of reviews"
+        [review]="review"
+      ></app-reviewed-movie-element>
+    </ion-list>
   </div>
 </ion-content>

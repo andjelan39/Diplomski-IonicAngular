@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ReviewedMoviesPageRoutingModule } from './reviewed-movies-routing.module';
 
 import { ReviewedMoviesPage } from './reviewed-movies.page';
+import { ReviewedMovieElementComponent } from '../reviewed-movie-element/reviewed-movie-element.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { ReviewedMoviesPage } from './reviewed-movies.page';
     IonicModule,
     ReviewedMoviesPageRoutingModule
   ],
-  declarations: [ReviewedMoviesPage]
+  declarations: [ReviewedMoviesPage, ReviewedMovieElementComponent]
 })
 export class ReviewedMoviesPageModule {}

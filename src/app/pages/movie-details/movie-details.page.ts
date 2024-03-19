@@ -1,20 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { ReviewModel } from 'src/app/review.model';
 import { MovieService } from 'src/app/services/movie.service';
 import { environment } from 'src/environments/environment';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-movie-details',
   templateUrl: './movie-details.page.html',
   styleUrls: ['./movie-details.page.scss'],
 })
-export class MovieDetailsPage implements OnInit {
+export class MovieDetailsPage implements OnInit, OnDestroy {
   movie: any;
   imageBaseUrl = environment.images;
   director!: string;
   actors: any[] = [];
 
-  id = this.route.snapshot.paramMap.get('id');
+  reviews!: ReviewModel[];
+  private reviewSub!: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,15 +26,31 @@ export class MovieDetailsPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.movieService.getMovieDetails(this.id).subscribe((res) => {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.movieService.getMovieDetails(id).subscribe((res) => {
       console.log(res);
       this.movie = res;
       this.getMovieCredits();
     });
+    this.reviewSub = this.movieService.reviews.subscribe((reviews) => {
+      this.reviews = reviews;
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.reviewSub) {
+      this.reviewSub.unsubscribe();
+    }
+  }
+
+  ionViewWillEnter() {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.movieService.getReviews(id).subscribe((reviewData) => {});
   }
 
   getMovieCredits() {
-    this.movieService.getMovieCredits(this.id).subscribe((res) => {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.movieService.getMovieCredits(id).subscribe((res) => {
       const credits = res;
 
       const director = credits.crew.find(
@@ -44,5 +64,12 @@ export class MovieDetailsPage implements OnInit {
       });
       console.log(this.actors);
     });
+  }
+
+  addMovieReview(reviewForm: NgForm) {
+    this.movieService
+      .addReview(reviewForm.value.review, this.movie)
+      .subscribe((res) => {});
+    reviewForm.reset();
   }
 }

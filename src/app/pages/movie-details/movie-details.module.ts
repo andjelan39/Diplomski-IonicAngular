@@ -8,6 +8,7 @@ import { MovieDetailsPageRoutingModule } from './movie-details-routing.module';
 
 import { MovieDetailsPage } from './movie-details.page';
 import { CastElementComponent } from '../cast-element/cast-element.component';
+import { ReviewElementComponent } from '../review-element/review-element.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { CastElementComponent } from '../cast-element/cast-element.component';
     IonicModule,
     MovieDetailsPageRoutingModule
   ],
-  declarations: [MovieDetailsPage, CastElementComponent]
+  declarations: [MovieDetailsPage, CastElementComponent, ReviewElementComponent]
 })
 export class MovieDetailsPageModule {}

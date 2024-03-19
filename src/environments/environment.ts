@@ -7,7 +7,7 @@ export const environment = {
   apiKey: 'e2c7d61eab245566eab44e4c320ad150',
   baseUrl: 'https://api.themoviedb.org/3',
   images: 'http://image.tmdb.org/t/p',
-  firebaseAPIKey: 'AIzaSyBKc3M5NLV0ml4FcCAB5LWF2_uJXAq5ULk'
+  firebaseAPIKey: 'AIzaSyAl8eVMLVwuhCHWtgtQ8bwkaPDk17Lx5zE'
 };
 
 /*
