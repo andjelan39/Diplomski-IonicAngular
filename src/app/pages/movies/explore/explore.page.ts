@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { InfiniteScrollCustomEvent, LoadingController } from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  InfiniteScrollCustomEvent,
+  IonContent,
+  LoadingController,
+} from '@ionic/angular';
 import { MovieService } from 'src/app/services/movie.service';
 import { environment } from 'src/environments/environment';
 
@@ -17,9 +21,14 @@ export class ExplorePage implements OnInit {
     private movieService: MovieService,
     private loadingCtrl: LoadingController
   ) {}
+  @ViewChild(IonContent, { static: false }) content!: IonContent;
 
   ngOnInit() {
     this.loadMovies();
+  }
+
+  scrollToTop() {
+    this.content.scrollToTop(300);
   }
 
   async loadMovies(event?: InfiniteScrollCustomEvent) {

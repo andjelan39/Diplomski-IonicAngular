@@ -9,7 +9,7 @@
 
 <ion-content [fullscreen]="true">
   <img [src]="imageBaseUrl + '/w1280' + movie?.backdrop_path" />
-  <div class="movie-card-title" *ngIf="movie">
+  <div class="wrapper" *ngIf="movie">
     <ion-grid>
       <ion-row>
         <ion-col size="8">
@@ -91,7 +91,7 @@
       </ion-grid>
     </form>
   </div>
-  <div class="movie-card-title">
+  <div class="wrapper">
     <ion-grid>
       <ion-row class="reviewsRow">
         <ion-col>
@@ -100,7 +100,7 @@
       </ion-row>
     </ion-grid>
   </div>
-  <div class="reviews">
+  <div class="reviews" *ngIf="reviews.length > 0">
     <ion-list>
       <app-review-element
         *ngFor="let review of reviews"
@@ -108,5 +108,14 @@
       ></app-review-element>
     </ion-list>
     <br />
+  </div>
+  <div class="wrapper" *ngIf="reviews.length === 0">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <h6 class="no-reviews">No reviews available for this movie. <br/> Add your review above. </h6>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 </ion-content>

@@ -1,4 +1,4 @@
-.movie-card-title {
+.wrapper {
   margin-left: 8px;
   margin-right: 5px;
 }
@@ -29,21 +29,28 @@ b {
   font-size: 14px;
 }
 
-.middleRow{
+.middleRow {
   margin-top: -13px;
 }
 
-.castRow{
+.castRow {
   margin-top: -15px;
   margin-bottom: 13px;
 }
 
-.creditsRow{
+.creditsRow {
   margin-bottom: 15px;
 }
 
-.reviewsRow{
-  margin-top: 3px;
+.reviewsRow {
+  margin-top: -12px;
+}
+
+.no-reviews {
+  text-align: center;
+  color: #b2b2b2;
+  margin-top: -3px;
+  margin-bottom: 18px;
 }
 
 p {
