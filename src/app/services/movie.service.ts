@@ -37,6 +37,15 @@ export class MovieService {
     return this._reviews.asObservable();
   }
 
+  reviewForEditing!: ReviewModel;
+
+  setReviewEdit(review: ReviewModel) {
+    this.reviewForEditing = review;
+  }
+  getReviewEdit() {
+    return this.reviewForEditing;
+  }
+
   getTopRatedMovies(page = 1): Observable<ApiResult> {
     return this.http.get<ApiResult>(
       `${environment.baseUrl}/movie/top_rated?api_key=${environment.apiKey}&page=${page}`
@@ -163,4 +172,69 @@ export class MovieService {
     );
   }
 
+  deleteReview(deleteReview: ReviewModel) {
+    var index: number;
+    return this.authService.token.pipe(
+      take(1),
+      switchMap((token) => {
+        return this.http.delete<{ name: string }>(
+          'https://movie-app-flicks-default-rtdb.europe-west1.firebasedatabase.app/reviews/' +
+            deleteReview.id +
+            '.json?auth=' +
+            token
+        );
+      }),
+      switchMap((reviewData) => {
+        return this.myReviews;
+      }),
+      take(1),
+      tap((reviews) => {
+        index = reviews.findIndex((review) => review.id == deleteReview.id);
+        var updatedReviews = [...reviews];
+        updatedReviews.splice(index, 1);
+        this.myReviews.next(updatedReviews);
+      })
+    );
+  }
+
+  editReview(id: string | null, text: string, movie: any) {
+    var index: number;
+    let loggedUser: UserModel | null;
+    let newReview: ReviewModel;
+    return this.authService.user.pipe(
+      take(1),
+      switchMap((user) => {
+        loggedUser = user;
+        newReview = new ReviewModel(id, text, movie, user);
+        return this.authService.token;
+      }),
+      take(1),
+      switchMap((token) => {
+        return this.http.put<{ name: string }>(
+          'https://movie-app-flicks-default-rtdb.europe-west1.firebasedatabase.app/reviews/' +
+            id +
+            '/.json?auth=' +
+            token,
+          newReview
+        );
+      }),
+      take(1),
+      switchMap((resData) => {
+        return this.myReviews;
+      }),
+      take(1),
+      tap((reviews) => {
+        index = reviews.findIndex((review) => review.id == newReview.id);
+        var updatedReview = [...reviews];
+        const review = updatedReview[index];
+        updatedReview[index] = {
+          id: id,
+          text: text,
+          movie: movie,
+          user: loggedUser,
+        };
+        this.myReviews.next(updatedReview);
+      })
+    );
+  }
 }

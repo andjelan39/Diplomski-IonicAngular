@@ -8,6 +8,7 @@ import { ReviewedMoviesPageRoutingModule } from './reviewed-movies-routing.modul
 
 import { ReviewedMoviesPage } from './reviewed-movies.page';
 import { ReviewedMovieElementComponent } from '../reviewed-movie-element/reviewed-movie-element.component';
+import { EditReviewModalComponent } from '../edit-review-modal/edit-review-modal.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { ReviewedMovieElementComponent } from '../reviewed-movie-element/reviewe
     IonicModule,
     ReviewedMoviesPageRoutingModule
   ],
-  declarations: [ReviewedMoviesPage, ReviewedMovieElementComponent]
+  declarations: [ReviewedMoviesPage, ReviewedMovieElementComponent, EditReviewModalComponent]
 })
 export class ReviewedMoviesPageModule {}

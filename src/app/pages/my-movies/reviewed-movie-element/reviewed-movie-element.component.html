@@ -14,8 +14,8 @@
           }})
         </h6>
         <p class="review-text">{{ review.text }}</p>
-        <ion-button type="submit" size="small"> EDIT </ion-button>
-        <ion-button type="submit" size="small"> DELETE </ion-button>
+        <ion-button type="submit" size="small" (click)="openEdit(review)"> EDIT </ion-button>
+        <ion-button type="submit" size="small" (click)="deleteReview(review)"> DELETE </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

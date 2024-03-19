@@ -1,0 +1,19 @@
+.areaField {
+  height: 140px;
+  border-radius: 12px;
+  box-shadow: 1px 8px 8px 0px rgba(0, 0, 0, 0.08);
+  --highlight-height: 0px;
+  --background: rgb(55, 62, 70);
+
+  ion-textarea {
+    font-size: 17px;
+    --padding-start: 5px;
+    --padding-bottom: 7px;
+    color: #dee0e3;
+  }
+}
+
+.addButton {
+  margin-top: 0px;
+  margin-bottom: 15px;
+}
