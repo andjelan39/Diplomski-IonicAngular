@@ -66,6 +66,10 @@ ion-item {
   --border-color: #373d48;
 }
 
+.ios .alert-wrapper {
+  --background: #373d48;
+}
+
 .auth-alert .alert-message {
   white-space: pre;
 }

@@ -12,4 +12,9 @@ export class ReviewElementComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  getUsernameFromEmail(email: any): string {
+    if (!email) return '';
+    return email.split('@')[0];
+  }
 }

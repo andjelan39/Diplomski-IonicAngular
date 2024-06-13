@@ -17,4 +17,13 @@
       ></app-reviewed-movie-element>
     </ion-list>
   </div>
+  <div *ngIf="reviews.length === 0">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <h5 class="no-reviews">You did not review any movies yet.</h5>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>

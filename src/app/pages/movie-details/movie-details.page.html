@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <img [src]="imageBaseUrl + '/w1280' + movie?.backdrop_path" />
+  <img [src]="movie?.backdrop_path ? imageBaseUrl + '/w1280' + movie?.backdrop_path : 'assets/no-image.png'" />
   <div class="wrapper" *ngIf="movie">
     <ion-grid>
       <ion-row>
@@ -20,7 +20,7 @@
         </ion-col>
         <ion-col size="4">
           <img
-            [src]="imageBaseUrl + '/w500' + movie.poster_path"
+            [src]="movie.poster_path ? imageBaseUrl + '/w500' + movie.poster_path : 'assets/noposter.jpg'"
             class="movie-card-img"
           />
         </ion-col>
@@ -28,6 +28,14 @@
       <ion-row class="middleRow">
         <ion-col>
           <p>{{movie.overview}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="runtimeRow">
+        <ion-col>
+          <span>RUNTIME</span> <br />
+          <span class="genre">
+            {{ movie.runtime }} MIN
+          </span>
         </ion-col>
       </ion-row>
       <ion-row class="middleRow">
@@ -41,9 +49,14 @@
       <ion-row class="creditsRow">
         <ion-col>
           <span>CAST</span>
-          <ion-row class="castRow">
+          <ion-row class="castRow"  *ngIf="actors.length > 0">
             <app-cast-element *ngFor="let actor of actors" [actor]="actor">
             </app-cast-element>
+          </ion-row>
+          <ion-row class="castRow"  *ngIf="actors.length == 0">
+            <span class="nocast">
+              No cast information available.
+            </span>
           </ion-row>
         </ion-col>
       </ion-row>

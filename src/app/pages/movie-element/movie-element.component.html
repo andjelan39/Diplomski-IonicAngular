@@ -1,6 +1,6 @@
 <ion-item>
   <ion-avatar slot="start">
-    <img [src]="imageBaseUrl + '/w92' + movie.poster_path" />
+    <img [src]="movie.poster_path ? imageBaseUrl + '/w92' + movie.poster_path : 'assets/noimage.jpg'" />
   </ion-avatar>
   <ion-label>
     {{ movie.title }}

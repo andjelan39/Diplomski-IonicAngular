@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -15,7 +15,8 @@ export class RegisterPage implements OnInit {
   constructor(
     private auth: AuthService,
     private router: Router,
-    private loadingCtlr: LoadingController
+    private loadingCtlr: LoadingController,
+    private alertCtrl: AlertController
   ) {
     this.registerForm = new FormGroup({});
   }
@@ -33,16 +34,37 @@ export class RegisterPage implements OnInit {
   }
 
   onRegister() {
-    this.loadingCtlr
-      .create({ message: 'Creating the account...' })
-      .then((loadingElement) => {
-        loadingElement.present();
-        this.auth.register(this.registerForm.value).subscribe((resData) => {
-          console.log('Successful registration.');
-          console.log(resData);
-          loadingElement.dismiss();
-          this.router.navigateByUrl('/movies');
+    if (this.registerForm.valid) {
+      this.loadingCtlr
+        .create({ message: 'Creating the account...' })
+        .then((loadingElement) => {
+          loadingElement.present();
+          this.auth.register(this.registerForm.value).subscribe(
+            (resData) => {
+              console.log('Successful registration.');
+              console.log(resData);
+              loadingElement.dismiss();
+              this.router.navigateByUrl('/movies');
+            },
+            (errRes) => {
+              console.log(errRes);
+              loadingElement.dismiss();
+              let message = 'Email is already in use. Try again.';
+
+              this.alertCtrl
+                .create({
+                  header: 'Registration failed',
+                  message,
+                  buttons: ['OK'],
+                  cssClass: 'auth-alert',
+                })
+                .then((alert) => {
+                  alert.present();
+                });
+              this.registerForm.reset();
+            }
+          );
         });
-      });
+    }
   }
 }

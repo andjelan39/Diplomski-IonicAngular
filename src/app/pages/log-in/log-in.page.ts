@@ -33,7 +33,7 @@ export class LogInPage implements OnInit {
 
           this.alertCtrl
             .create({
-              header: 'Authetication failed',
+              header: 'Authentication failed',
               message,
               buttons: ['OK'],
               cssClass: 'auth-alert',
