@@ -18,7 +18,7 @@
           <br />
           <p class="tagline">{{ movie.tagline }}</p>
         </ion-col>
-        <ion-col size="4">
+        <ion-col size="4" class="movie-poster">
           <img
             [src]="movie.poster_path ? imageBaseUrl + '/w500' + movie.poster_path : 'assets/noposter.jpg'"
             class="movie-card-img"
@@ -79,7 +79,7 @@
             <ion-item class="areaField">
               <ion-textarea
                 type="text"
-                rows="4"
+                rows="6"
                 placeholder="Enter your review..."
                 ngModel
                 name="review"

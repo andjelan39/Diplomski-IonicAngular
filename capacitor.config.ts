@@ -1,11 +1,11 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'mobile-movie-app',
+  appId: 'com.flicks.movies',
+  appName: 'Flicks',
   webDir: 'www',
   server: {
-    androidScheme: 'https'
+    androidScheme: 'https',
   }
 };
 
